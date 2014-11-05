@@ -107,8 +107,8 @@ Repeat the above steps in Host2
 
 Experiment 3 - Use VLAN to seggregate containers 
 =======
-    If you want to seggregate the containers in separate VLAN
-        - ./connect-container.sh <container-pid> <172.15.42.X> <vlan-id>
+    If you want to segregate the containers via VLAN tags, you can isolate the containers via 
+        - ./connect-container.sh <container-pid> <172.15.42.X> <vlan-id-tag>
 
 References
 =======
@@ -118,5 +118,5 @@ The scripts used in our experiements have been adapted from the following links 
 
 Next Steps
 =======
-Use OVS to specify QoS for different containers
-Setup VXLAN instead of GRE tunnel
+- Use OVS to specify QoS for different containers
+- Setup VXLAN instead of GRE tunnel
