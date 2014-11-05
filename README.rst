@@ -31,7 +31,9 @@ that we will use in our experiment
 Cotainet Setup
 =======
 
-Assuming that you are in the top folder:
+After you login to your host machines, change directory to the shared folder. based on the Vagrantfile,
+I have my scripts in /home/meetup.
+        - cd /home/meetup
     Run the installation script
         - sudo ./install.sh
     Install ubuntu image
