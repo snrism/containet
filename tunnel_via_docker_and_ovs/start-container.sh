@@ -3,7 +3,7 @@
 # connect docker containers via OpenvSwitch Bridge
 
 #[ "$2" ] || {
-#  echo "./start-container.sh <ip-addr> <bridge-iface-addr>"
+#  echo "./start-container.sh <container-id> <ip-addr>"
 #  exit 1
 #}
 
