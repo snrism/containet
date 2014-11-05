@@ -22,7 +22,7 @@ In this setup, we plan to use 2 Ubuntu Trusty nodes
 that we will use in our experiment
         - mkdir vagrant/cluster
         - cd vagrant/cluster
-    Edit your Vagrant file to update the source folder where you have downloaed the "containet" scripts.
+    Edit your Vagrant file to update the 'source folder' info to where you have downloaed the "containet" scripts.
     Check the script on how to set the correct folder. Once your vagrantfile is updated, initialize.
         - vagrant init
     Bringup the 2 nodes:
