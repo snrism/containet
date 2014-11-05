@@ -28,13 +28,13 @@ In this setup, we plan to use 2 Ubuntu Trusty nodes
 Cotainet Setup
 =======
 
-After you login to your host machines, change directory to the shared folder. based on the Vagrantfile,
-I have my scripts in /home/meetup.
-        - cd /home/meetup
+After you login to your host machines, change directory to the shared folder, 'meetup', which should be in /home/vagrant/meetup. Also change to root since we'll be doing a number of privileged commands 
+        - cd  meetup
+        - sudo bash
     Run the installation script
-        - sudo ./install.sh
+        - ./install.sh
     Install ubuntu image
-        - sudo docker build -t ubuntu config/Dockerfile
+        - docker build -t ubuntu config/
     In Host1, update 'tunrc' to reflect your setting (e.g., update REMOTE_IP: to host2's IP.
     Incase if you are using our vagrant setup, no changes required)
         - source config/host1_tunrc
@@ -64,9 +64,8 @@ In Host1:
     If you are using default configuration from tunrc, copy the container-id from above and pick an IP in the 172.15.42.X subnet.
     We started containers without any iface and now configure 'eth0' with our own IP in the specified subnet
     This ensures we do not have conflicting IP addresses in our setup.
-        - ./start-container.sh <container-id> <172.15.42.X>
-
-Repeat the above steps in Host2..
+        - ./start-container.sh <container-id> 172.15.42.100 # on host 1
+        - ./start-container.sh <container-id> 172.15.42.101 # on host 2
 
     Test Connection: First attach to the containers
         - docker attach <container-id>
@@ -95,7 +94,8 @@ In Host1:
 
     If using default configurations in tunrc, copy the container-id from above and pick an IP in the 172.15.42.X subnet.
     the diff with start-container script is this will create 'eth1' interface and attach it directly to the OVS bridge
-        - ./connect-container.sh <container-pid> <172.15.42.X>
+        - ./connect-container.sh <container-id> 172.15.42.100 # on host 1
+        - ./connect-container.sh <container-id> 172.15.42.101 # on host 1
 
 Repeat the above steps in Host2
 
