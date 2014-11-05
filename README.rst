@@ -1,13 +1,13 @@
 Docker-OVS Integration
 ==========
 
-The goal is to connect docker containers hosted in multiple nodes via OpenvSwitch.
-In this setup, we will replace the existing docker bridge with OVS.
-We will setup GRE tunnels between OVS switches in 2 nodes and connect the containers via OVS.
+In these set of experiments, we will connect docker containers hosted in multiple nodes via OpenvSwitch.
+We will replace the existing docker bridge with OVS to leverage different functionalities. We start with
+setting up GRE tunnels between OVS switches in 2 nodes and connect the containers via OVS.
 
 Installation
 ===========
-Note: If you have 2 hosts that are already running docker, you can skip to the Containet Setup
+Note: If you have 2 hosts that are already running docker, you can skip this section and move to the Containet Setup
 
 - Install virtualbox https://www.virtualbox.org/wiki/Downloads
 - Install vagrant https://www.vagrantup.com/downloads.html
@@ -31,7 +31,7 @@ In this setup, we plan to use 2 Ubuntu Trusty nodes
 Cotainet Setup
 =======
 
-Assuming you are in the top folder:
+Assuming that you are in the top folder:
     Run the installation script
         - sudo ./install.sh
     Install ubuntu image
@@ -44,7 +44,7 @@ Assuming you are in the top folder:
         - source config/host2_tunrc
 
 
-Experiment 1 - Connect docker bridge and OVS bridge to connect containers hsoted in 2 hosts:
+Experiment 1 - Connect docker bridge and OVS bridge to connect containers hosted in 2 hosts:
 =======
     Use the below folder for this experiment:
         - cd tunnel_via_docker_and_ovs/
