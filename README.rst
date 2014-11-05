@@ -18,10 +18,7 @@ In this setup, we plan to use 2 Ubuntu Trusty nodes
 
     Pull the Ubuntu image using:
         - vagrant box add ubuntu/trusty64 https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/1/providers/virtualbox.box
-    Once you have the image in your host node, use the vagrantfile to bring up the 2 nodes 
-that we will use in our experiment
-    Edit your Vagrant file to update the 'source folder' info to where you have downloaed the "containet" scripts.
-    Check the script on how to set the correct folder. Once your vagrantfile is updated, initialize.
+    Once you have the image in your host node, use the vagrantfile to bring up the 2 nodes that we will use in our experiment
     Bringup the 2 nodes:
         - vagrant up
     SSH into the nodes
