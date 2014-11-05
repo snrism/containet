@@ -1,13 +1,15 @@
 Docker-OVS Integration
 ==========
 
-In these set of experiments, we will connect docker containers hosted in multiple nodes via OpenvSwitch.
-We will replace the existing docker bridge with OVS to leverage different functionalities. We start with
-setting up GRE tunnels between OVS switches in 2 nodes and connect the containers via OVS.
+In these set of experiments, we will connect docker containers hosted in multiple nodes via 
+OpenvSwitch. We will replace the existing docker bridge with OVS to leverage different 
+functionalities. We start with setting up GRE tunnels between OVS switches in 2 nodes 
+and connect the containers via OVS.
 
 Installation
 ===========
-Note: If you have 2 hosts that are already running docker, you can skip this section and move to the Containet Setup
+Note: If you have 2 hosts that are already running docker, you can skip this section and 
+move to the Containet Setup
 
 - Install virtualbox https://www.virtualbox.org/wiki/Downloads
 - Install vagrant https://www.vagrantup.com/downloads.html
@@ -16,7 +18,8 @@ In this setup, we plan to use 2 Ubuntu Trusty nodes
 
     Pull the Ubuntu image using:
         - vagrant box add ubuntu/trusty64 https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/1/providers/virtualbox.box
-    Once you have the image in your host node, use the vagrantfile to bring up the 2 nodes that we will use in our experiment
+    Once you have the image in your host node, use the vagrantfile to bring up the 2 nodes 
+that we will use in our experiment
         - mkdir vagrant/cluster
         - cd vagrant/cluster
     Edit your Vagrant file to update the source folder where you have downloaed the "containet" scripts.
