@@ -18,7 +18,12 @@ In this setup, we plan to use 2 Ubuntu Trusty nodes
 
     Pull the Ubuntu image using:
         - vagrant box add ubuntu/trusty64 https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/1/providers/virtualbox.box
-    Once you have the image in your host node, use the vagrantfile to bring up the 2 nodes that we will use in our experiment
+    Once you have the image in your host node, use the vagrantfile to bring up the 2 nodes that we will use in our experiment.
+    
+    Create a directory in your favorite location and pull the source code.
+        - git clone https://snrism@bitbucket.org/snrism/containet.git
+    At this point in your current folder you have a sub-folder called 'containet' with the scripts
+        - cd containet/
     Bringup the 2 nodes:
         - vagrant up
     SSH into the nodes
@@ -65,13 +70,17 @@ In Host1:
     We started containers without any iface and now configure 'eth0' with our own IP in the specified subnet
     This ensures we do not have conflicting IP addresses in our setup.
         - ./start-container.sh <container-id> 172.15.42.100 # on host 1
+        
+In Host2:
+    Repeat above steps except start a container with a different IP
         - ./start-container.sh <container-id> 172.15.42.101 # on host 2
-
-    Test Connection: First attach to the containers
+        
+Test Connection: 
+    First attach to the containers by copying the container-id from 'docker ps' command
         - docker attach <container-id>
 
-    Ping other container
-        - ping 172.15.42.X
+    From host1: Ping other container
+        - ping 172.15.42.101 
 
 
 Experiment 2 - Only use OVS to directly connect containers hosted in 2 hosts:
@@ -95,18 +104,22 @@ In Host1:
     If using default configurations in tunrc, copy the container-id from above and pick an IP in the 172.15.42.X subnet.
     the diff with start-container script is this will create 'eth1' interface and attach it directly to the OVS bridge
         - ./connect-container.sh <container-id> 172.15.42.100 # on host 1
+
+In Host2:
+    Repeat above steps except start a container with a different IP
         - ./connect-container.sh <container-id> 172.15.42.101 # on host 1
-
-Repeat the above steps in Host2
-
-    Test Connection: First attach to the containers
+        
+Test Connection: 
+    First attach to the containers by copying the container-id from 'docker ps' command
         - docker attach <container-id>
-    Ping
-        - ping 172.15.42.X
+
+    From host1: Ping other container
+        - ping 172.15.42.101 
+
 
 Experiment 3 - Use VLAN to seggregate containers 
 =======
-    If you want to segregate the containers via VLAN tags, you can isolate the containers via 
+    If you want to segregate the containers via VLAN tags, you can isolate the containers by specifying the vlan-id: 
         - ./connect-container.sh <container-pid> <172.15.42.X> <vlan-id-tag>
 
 References
@@ -117,5 +130,9 @@ The scripts used in our experiements have been adapted from the following links 
 
 Next Steps
 =======
-- Use OVS to specify QoS for different containers
-- Setup VXLAN instead of GRE tunnel
+    - Setup VXLAN instead of GRE tunnel
+    - Use OVS to specify QoS for different containers
+    
+Contact
+======
+    natarajan(dot)sriram(at)gmail
