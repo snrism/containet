@@ -2,9 +2,24 @@ Docker-OVS Integration
 ==========
 
 In these set of experiments, we will connect docker containers hosted in multiple nodes via 
-OpenvSwitch. We will replace the existing docker bridge with OVS to leverage different 
-functionalities. We start with setting up GRE tunnels between OVS switches in 2 nodes 
-and connect the containers via OVS.
+OpenvSwitch. 
+
+Experiment 1: Disable docker networking configuration to avoid conflicting IPs
+              Connect the existing docker bridge with OVS 
+              Establish a GRE tunnel between two hosts using OVS bridge
+              Start docker containers in 2 hosts
+              Configure IP addresses for each container (to avoid IP conflicts when connecting containers in the 2 hosts)
+              Test container connection
+              
+Experiment 2: Disable docker networking configuration to avoid conflicting IPs
+              Exclude docker bridge and directly connect the containers with OVS 
+              Establish a GRE tunnel between two hosts using OVS bridge
+              Start docker containers in 2 hosts
+              Configure IP addresses for each container
+              Test container connection
+              
+Experiment 3: Same as Experiment 2, but start containers with VLAN tags to isolate set of containers.
+              
 
 Installation
 ===========
@@ -17,15 +32,17 @@ move to the Containet Setup
 In this setup, we plan to use 2 Ubuntu Trusty nodes
 
     Pull the Ubuntu image using:
-        - vagrant box add ubuntu/trusty64 https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/1/providers/virtualbox.box
-    Once you have the image in your host node, use the vagrantfile to bring up the 2 nodes that we will use in our experiment.
+        - vagrant box add ubuntu/trusty64 https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/1/providers/virtualbox.box    
     
     Create a directory in your favorite location and pull the source code.
         - git clone https://snrism@bitbucket.org/snrism/containet.git
+    
     At this point in your current folder you have a sub-folder called 'containet' with the scripts
         - cd containet/
-    Bringup the 2 nodes:
+    
+    Once you have the image in your host node, use the vagrantfile in the folder to bring up the 2 VMs.
         - vagrant up
+    
     SSH into the nodes
         - vagrant ssh host1
         - vagrant ssh host2
@@ -33,7 +50,9 @@ In this setup, we plan to use 2 Ubuntu Trusty nodes
 Cotainet Setup
 =======
 
-After you login to your host machines, change directory to the shared folder, 'meetup', which should be in /home/vagrant/meetup. Also change to root since we'll be doing a number of privileged commands 
+    After you login to your VM machines, change directory to the shared folder, 'meetup', 
+    which should be in /home/vagrant/meetup. Also change to root since we'll be 
+    doing a number of privileged commands 
         - cd  meetup
         - sudo bash
     Run the installation script
