@@ -4,7 +4,9 @@ Docker-OVS Integration
 In these set of experiments, we will connect docker containers hosted in multiple nodes via 
 OpenvSwitch. 
 
-Experiment 1: 
+Setup Explanation slides: http://www.slideshare.net/snrism/dockerovs-n
+
+Experiment 1 (slide 13 in above link): 
     - Disable docker networking configuration to avoid conflicting IPs
     - Connect the existing docker bridge with OVS 
     - Establish a GRE tunnel between two hosts using OVS bridge
@@ -12,7 +14,7 @@ Experiment 1:
     - Configure IP addresses for each container (to avoid IP conflicts when connecting containers in the 2 hosts)
     - Test container connection
               
-Experiment 2: 
+Experiment 2 (slide 14): 
     - Disable docker networking configuration to avoid conflicting IPs
     - Exclude docker bridge and directly connect the containers with OVS 
     - Establish a GRE tunnel between two hosts using OVS bridge
@@ -20,7 +22,8 @@ Experiment 2:
     - Configure IP addresses for each container
     - Test container connection
               
-Experiment 3: Same as Experiment 2, but start containers with VLAN tags to isolate set of containers.     
+Experiment 3 (slide 15): 
+    - Same as Experiment 2, but start containers with VLAN tags to isolate set of containers.     
 
 Installation
 ===========
